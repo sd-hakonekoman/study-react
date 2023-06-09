@@ -19,7 +19,11 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <Headline title="Index page" />
+          <Headline
+            title="Index page"
+          >
+            <code className={styles.code}>pages/index.js</code>
+          </Headline>
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
