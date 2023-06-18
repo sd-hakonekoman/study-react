@@ -6,6 +6,7 @@ import descriptionStyles from '@/styles/Description.module.css'
 import { Footer } from '../components/Footer'
 import { Links } from '@/components/Links'
 import {Headline} from '@/components/Headline'
+import { Header } from '@/components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,10 +20,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="noindex,nofollow" />
       </Head>
+
+      <Header />
+      
       <main className={`${styles.main} ${inter.className}`}>
         <div className={descriptionStyles.description}>
           <Headline
-            title="Index page ch5"
+            title="Index page #6"
           >
             <code className={styles.code}>pages/index.js</code>
           </Headline>
