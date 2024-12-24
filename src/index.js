@@ -1,14 +1,19 @@
 // import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App";
-import { CssModules } from "./components/CssModules";
-import { StyledJsx } from "./components/StyledJsx";
-import { StyledComponents } from "./components/StyledComponents";
-import { Emotion } from "./components/Emotion";
+// import { CssModules } from "./components/CssModules";
+// import { StyledJsx } from "./components/StyledJsx";
+// import { StyledComponents } from "./components/StyledComponents";
+// import { Emotion } from "./components/Emotion";
+import { AdminFlagProvider } from "./components/ch7/providers/AdminFlagProvider";
 
 // `createRoot` を使用してレンダリング
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(
+  <AdminFlagProvider>
+    <App />
+  </AdminFlagProvider>
+);
 
 // const ch5 = ReactDOM.createRoot(document.getElementById('ch5'));
 // ch5.render(<CssModules />)
