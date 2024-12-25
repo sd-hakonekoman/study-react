@@ -1,45 +1,25 @@
-import { useState, useEffect } from 'react'
-import { ListItem } from './components/ListItem'
+import { useState } from 'react'
 // import axios from 'axios'
-import type { User } from './types/user'
+import { useFetchUsers } from './hooks/useFetchUsers';
 
 function App() {
-  // 取得したユーザー情報
-  const [users, setUsers] = useState<User[]>([])
-
-  // 画面表示時にユーザー情報取得
-  useEffect(()=>{
-    // axios.get("https://example.com/users").then((res)=>{
-    //   setUsers(res.data)
-    // })
-    setUsers([
-      {
-        id: 1,
-        name: '佐藤',
-        age: 23,
-        personalColor: '#00f'
-      },
-      {
-        id: 2,
-        name: 'スズキ',
-        age: 20,
-        personalColor: 'red'
-      },
-      {
-        id: 3,
-        name: '太郎',
-        age: 26,
-        hobbies: ['game', 'soccer']
-      },
-    ])
-  }, [])
+  const { userList, onClickFetchUser, isError, isLoading } = useFetchUsers()
+  console.log(userList)
 
   return (
     <div>
-      <h1>ch8</h1>
-      {users.map(users=>(
-        <ListItem id={users.id} name={users.name} age={users.age} personalColor={users.personalColor} hobbies={users.hobbies} />
-      ))}
+      <button onClick={onClickFetchUser} type='button'>ユーザー取得</button>
+      {/* エラーの場合はエラーメッセージを表示 */}
+      {isError && <p style={{color:'red'}}>エラーが発生しました</p>}
+
+      {/* ローディング中は表示を切り替える */}
+      { isLoading ? (
+        <p>データ取得中です</p>
+        ) : (
+          userList.map(user => (
+            <p key={user.id}>{`${user.id}:${user.lastname} (${user.age}歳)`}</p>
+          ))
+        ) }
     </div>
   )
 }
